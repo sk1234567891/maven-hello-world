@@ -1,4 +1,3 @@
 FROM openjdk:8
-COPY /target/*.jar .
-RUN ls -lah
-CMD java -jar *.jar
+COPY my-app/target/my-app-*.jar my-app.jar
+CMD java -jar my-app.jar
