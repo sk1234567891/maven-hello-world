@@ -21,8 +21,12 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 - task: Docker@2
+  displayName: dockerLogin
   inputs:
+    command: login
     containerRegistry: 'myownDockerHubAccounts'
+- task: Docker@2
+  inputs:
     repository: 'sk123456789\maven-hello-world-ref'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
