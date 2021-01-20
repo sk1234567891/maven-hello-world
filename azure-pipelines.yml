@@ -25,9 +25,28 @@ steps:
   inputs:
     command: login
     containerRegistry: 'myownDockerHubAccounts'
+
+- task: Docker@2
+  displayName: dockerBuild
+  inputs:
+    repository: $(imageRepository)
+    command: build
+    Dockerfile: Dockerfile
+    tags: |
+      latest
+
+
 - task: Docker@2
   inputs:
     repository: 'sk123456789\maven-hello-world-ref'
-    command: 'buildAndPush'
+    command: 'build'
     Dockerfile: '**/Dockerfile'
     tags: 'latest'
+- task: Docker@2
+  displayName: dockerPush
+  inputs:
+    command: push
+    containerRegistry: 'myownDockerHubAccounts'
+    repository: $(imageRepository)
+    tags: |
+      latest
