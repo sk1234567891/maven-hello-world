@@ -24,7 +24,5 @@ steps:
   displayName: Build and Push
   inputs:
     command: 'build'
-    containerRegistry: dockerRegistryServiceConnection1
-    repository: contosoRepository
     tags: |
       1.0.0
